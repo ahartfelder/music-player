@@ -1,0 +1,29 @@
+.list {
+  margin: 20px;
+}
+
+.item {
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--bg-primary);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.item:hover {
+  opacity: 1;
+}
+
+.name {
+  text-align: start;
+  display: grid;
+  row-gap: 5px;
+}
+
+.artist, .duration {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
