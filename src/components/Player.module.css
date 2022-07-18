@@ -26,6 +26,7 @@
 
 .timeline {
   cursor: pointer;
+  position: relative;
   background-color: rgb(20, 20, 20);
   border-radius: 10px;
 }
@@ -40,6 +41,28 @@
 .timeline:hover .line {
   background-color: var(--primary);
 }
+
+.slider {
+  cursor: pointer;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  opacity: 0.2;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 5px;
+  width: 5px;
+  background-color: black;
+}
+
+/* .audio {
+  display: none;
+} */
 
 .play {
   cursor: pointer;

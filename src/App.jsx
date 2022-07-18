@@ -1,10 +1,10 @@
 import './App.css';
 import MusicList from './components/MusicList';
 import Player from './components/Player';
-import { musics } from './data/musicData'
+import { useControls } from './data/hooks/useControls';
 
 function App() {
-  const selectedMusic = musics[0]
+  const { musics, selectedMusic, selectMusic } = useControls()
   return (
     <div className="App">
       <header>
@@ -12,7 +12,7 @@ function App() {
           <span className='header-title'>Music</span> Player
         </h1>
       </header>
-      <MusicList musics={musics} />
+      <MusicList musics={musics} selected={selectedMusic} onSelect={selectMusic} />
       <Player music={selectedMusic} />
     </div>
   );
