@@ -3,7 +3,7 @@
   padding: 20px;
   border-radius: 10px;
   background-color: var(--bg-secondary);
-  width: 500px;
+  max-width: 500px;
   text-align: center;
 }
 

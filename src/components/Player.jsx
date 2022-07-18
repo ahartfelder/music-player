@@ -2,15 +2,19 @@ import styles from './Player.module.css'
 import timeFormatter from '../data/TimeService'
 import { useEffect, useRef, useState } from 'react'
 
-export default function Player({music}) {
-  const audioRef = useRef()
+export default function Player({music, next, back}) {
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [canPlay, setCanPlay] = useState(false)
-
+  const [loop, setLoop] = useState(false)
+  const audioRef = useRef()
+  
   useEffect(() => {
-    console.log('Hey')
+    setCanPlay(false)
+    setIsPlaying(false)
+    setCurrentTime(0)
+    setDuration(music.duration || 0)
   }, [music])
 
   useEffect(() => {
@@ -22,18 +26,25 @@ export default function Player({music}) {
   }, [isPlaying])
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentTime(audioRef.current.currentTime), 500)
-    return clearInterval(interval)
+    const interval = setInterval(() => {
+      if(isPlaying) {
+        setCurrentTime(audioRef.current.currentTime)
+      }
+    }, 500)
+    return () => clearInterval(interval)
   }, [isPlaying])
-
+  
   function onCanPlay() {
-    setCanPlay(true)
-    setIsPlaying(true)
+    if(currentTime === 0) {
+      setCanPlay(true)
+      setIsPlaying(true)
+    }
   }
   
   function onEnded() {
     setCanPlay(false)
     setIsPlaying(false)
+    next(loop)
   }
   
   return (
@@ -46,7 +57,7 @@ export default function Player({music}) {
         <span className={styles.duration}>{timeFormatter(currentTime)} / {timeFormatter(duration)}</span>
       </div>
       <div className={styles.timeline}>
-        <div className={styles.line}></div>
+        <div className={styles.line} style={{'--width': `${currentTime * 100 / duration}%`}}></div>
         <input type="range" 
           className={styles.slider} 
           onChange={e => {
@@ -55,17 +66,53 @@ export default function Player({music}) {
           }}
           value={currentTime}
           max={duration}
+          step='any'
         />
       </div>
       <audio controls
         className={styles.audio}
         ref={audioRef}
         src={music.url}
-        onCanPlay={onCanPlay}
-        onEnded={onEnded}
-      />
+        onCanPlay={onCanPlay} 
+        onEnded={onEnded} />
       <div className={styles.controls}>
-        <button className={styles.play}>Play</button>
+        {/* <button
+          className={[styles.btn, `${shuffle ? styles.active : styles.deactive}`].join(' ')}
+          onClick={() => setShuffle(!shuffle)}
+          disabled={true}
+        >
+          {'\u292d'}
+        </button> */}
+        <button
+          className={styles.btn}
+          onClick={() => {
+            back()
+            audioRef.current.currentTime = 0
+          }}
+          disabled={!canPlay}
+        >
+          {'\u25c0\u25ae'}
+        </button>
+        <button 
+          className={styles.btn}
+          onClick={() => setIsPlaying(!isPlaying)}
+          disabled={!canPlay}
+        >
+          {isPlaying ? '\u25ae\u25ae' : '\u25b6'}
+        </button>
+        <button 
+          className={styles.btn}
+          onClick={() => next(loop)}
+          disabled={!canPlay}
+        >
+          {'\u25ae\u25b6'}
+        </button>
+        <button
+          className={[styles.btn, `${loop ? styles.active : styles.deactive}`].join(' ')}
+          onClick={() => setLoop(!loop)}
+        >
+          {'\u21bb'}
+        </button>
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import Player from './components/Player';
 import { useControls } from './data/hooks/useControls';
 
 function App() {
-  const { musics, selectedMusic, selectMusic } = useControls()
+  const { musics, selectedMusic, selectMusic, next, back } = useControls()
   return (
     <div className="App">
       <header>
@@ -13,7 +13,7 @@ function App() {
         </h1>
       </header>
       <MusicList musics={musics} selected={selectedMusic} onSelect={selectMusic} />
-      <Player music={selectedMusic} />
+      <Player music={selectedMusic} next={next} back={back} />
     </div>
   );
 }
