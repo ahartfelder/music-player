@@ -1,0 +1,55 @@
+.container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--bg-primary);
+  border-radius: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.music {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  text-align: start;
+  display: grid;
+  row-gap: 5px;
+}
+
+.artist, .duration {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+.timeline {
+  cursor: pointer;
+  background-color: rgb(20, 20, 20);
+  border-radius: 10px;
+}
+
+.line {
+  width: 25%;
+  height: 5px;
+  background-color: rgb(36, 36, 36);
+  border-radius: 10px;
+}
+
+.timeline:hover .line {
+  background-color: var(--primary);
+}
+
+.play {
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+
+.play:hover {
+  transform: scale(1.1);
+}

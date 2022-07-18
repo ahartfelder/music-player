@@ -1,20 +1,30 @@
 .list {
-  margin: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .item {
-  margin: 10px;
   padding: 10px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-list);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  opacity: 0.7;
+  opacity: 0.8;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .item:hover {
   opacity: 1;
+}
+
+.selected {
+  background-color: var(--bg-selected);
 }
 
 .name {

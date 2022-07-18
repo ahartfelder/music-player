@@ -25,4 +25,18 @@ ul {
   --text-secondary: rgb(128, 128, 128);
   --bg-primary: #000;
   --bg-secondary: rgb(22, 22, 22);
+  --bg-list: rgb(12, 12, 12);
+  --bg-selected: rgb(0, 75, 0);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(44, 44, 44);
 }
