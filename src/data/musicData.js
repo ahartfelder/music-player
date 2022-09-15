@@ -1,29 +1,29 @@
 export const musics = [
   {
     id: 1,
-    title: 'First Music',
-    artist: 'Artist 1',
+    title: 'Clap and Yell',
+    artist: 'Benjamin Tissot',
     duration: 176,
     url: 'audio/clapandyell.mp3'
   },
   {
     id: 2,
-    title: 'Second Music',
-    artist: 'Artist 2',
+    title: 'Evolution',
+    artist: 'Benjamin Tissot',
     duration: 165,
     url: 'audio/evolution.mp3'
   },
   {
     id: 3,
-    title: 'Third Music',
-    artist: 'Artist 3',
+    title: 'Chapter Two (ft. Carrie)',
+    artist: 'Lionell Cassio',
     duration: 240,
-    url: 'audio/leonell-cassio.mp3'
+    url: 'audio/chapter-two.mp3'
   },
   {
     id: 4,
-    title: 'Fourth Music',
-    artist: 'Artist 4',
+    title: 'Ukulele',
+    artist: 'Benjamin Tissot',
     duration: 146,
     url: 'audio/ukulele.mp3'
   }
